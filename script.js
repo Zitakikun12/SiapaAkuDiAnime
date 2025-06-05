@@ -307,6 +307,7 @@ const characters = {
   ]
 };
 
+
 const cheatBtn = document.getElementById("cheatBtn");
 const cheatModal = document.getElementById("cheatModal");
 const cheatCode = document.getElementById("cheatCode");
@@ -314,22 +315,27 @@ const cheatOptions = document.getElementById("cheatOptions");
 const submitCheatCode = document.getElementById("submitCheatCode");
 const closeCheat = document.getElementById("closeCheat");
 
+
 cheatBtn.addEventListener("click", () => {
   cheatModal.style.display = cheatModal.style.display === "block" ? "none" : "block";
 });
 
+
 closeCheat.addEventListener("click", () => {
   cheatModal.style.display = "none";
 });
+
 
 submitCheatCode.addEventListener("click", () => {
   if (cheatCode.value === "SayangNadira") {
     cheatOptions.style.display = "block";
     cheatCode.style.display = "none";
     submitCheatCode.style.display = "none";
+    
 
     const cheatOptionsContainer = cheatOptions.querySelector("div");
     cheatOptionsContainer.innerHTML = "";
+    
 
     const allCharacters = [...characters.male, ...characters.female]
       .filter(char => char.id <= 24)
@@ -345,6 +351,7 @@ submitCheatCode.addEventListener("click", () => {
       btn.style.borderRadius = "3px";
       
       btn.addEventListener("click", () => {
+
         inputSection.classList.add("hidden");
         quizSection.classList.add("hidden");
         resultSection.classList.remove("hidden");
@@ -418,6 +425,7 @@ function getBestMatch() {
   const scores = pool.map(char => {
     let score = 0;
     
+
     answers.forEach((answer, index) => {
       const ans = answer.toLowerCase();
       const question = questions[index].question.toLowerCase();
@@ -428,6 +436,7 @@ function getBestMatch() {
         if (char.sifat.toLowerCase().includes(ans)) score += 3;
       }
       
+
       if (question.includes("hobi") && char.hobby.toLowerCase().includes(ans)) score += 2;
       if (question.includes("makanan") && char.makanan.toLowerCase().includes(ans)) score += 2;
       if (question.includes("tempat") && char.tempat.toLowerCase().includes(ans)) score += 2;
@@ -444,6 +453,10 @@ function getBestMatch() {
 
   scores.sort((a, b) => b.score - a.score);
   
+
+  console.log("Top 3 Matches:", scores.slice(0, 3));
+  
+
   if (scores.length > 2 && scores[0].score - scores[2].score < 3) {
     const topMatches = scores.slice(0, 3);
     return topMatches[Math.floor(Math.random() * topMatches.length)].char;
@@ -458,11 +471,11 @@ async function showResult() {
   resultSection.classList.remove("hidden");
 
   const match = getBestMatch();
-
+  
+  // Use local image first
   resultContent.innerHTML = `
     <div class="anime-card">
-      <img src="${match.image}" alt="${match.nama}" class="character-image" 
-           onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'" />
+      <img src="${match.image}" alt="${match.nama}" class="character-image" onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'" />
       <div class="anime-info">
         <h2>${nameInput.value || "Anda"} mirip dengan:</h2>
         <div class="anime-title">${match.nama}</div>
@@ -483,7 +496,7 @@ async function showResult() {
     const apiUrl = `https://api.jikan.moe/v4/characters?q=${encodeURIComponent(match.nama)}&limit=1`;
     const res = await fetch(apiUrl);
     const data = await res.json();
-
+    
     if (data.data && data.data[0]) {
       const charData = data.data[0];
       const malLink = `<a href="${charData.url}" target="_blank" class="mal-link">Lihat di MyAnimeList</a>`;
