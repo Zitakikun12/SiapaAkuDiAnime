@@ -471,13 +471,14 @@ async function showResult() {
   resultSection.classList.remove("hidden");
 
   const match = getBestMatch();
-  
-  // Use local image first
+
+  // Gunakan gambar lokal terlebih dahulu
   resultContent.innerHTML = `
     <div class="anime-card">
-      <img src="${match.image}" alt="${match.nama}" class="character-image" onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'" />
+      <img src="${match.image}" alt="${match.nama}" class="character-image" 
+           onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'" />
       <div class="anime-info">
-<h2>${nameInput.value || || "Anda"} mirip dengan:</h2>
+        <h2>${nameInput.value || "Anda"} mirip dengan:</h2>
         <div class="anime-title">${match.nama}</div>
         <div class="anime-details">
           <p><b>Sifat:</b> ${match.sifat}</p>
@@ -496,7 +497,7 @@ async function showResult() {
     const apiUrl = `https://api.jikan.moe/v4/characters?q=${encodeURIComponent(match.nama)}&limit=1`;
     const res = await fetch(apiUrl);
     const data = await res.json();
-    
+
     if (data.data && data.data[0]) {
       const charData = data.data[0];
       const malLink = `<a href="${charData.url}" target="_blank" class="mal-link">Lihat di MyAnimeList</a>`;
