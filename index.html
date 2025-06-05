@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cek Kepribadian Anime</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Additional inline styles for better mobile experience */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+        width: 95%;
+      }
+      
+      #options button {
+        flex: 1 1 100%;
+      }
+      
+      #resultContent img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tambahkan ini di bagian atas HTML Anda, sebelum elemen lainnya -->
+<div id="cheat-section" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+  <button id="cheatBtn" style="background-color: #ff4757; color: white; border: none; padding: 10px; border-radius: 50%; cursor: pointer;">CHEAT</button>
+  <div id="cheatModal" style="display: none; position: fixed; bottom: 70px; right: 20px; width: 300px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+    <h3 style="margin-top: 0;">Cheat Menu</h3>
+    <input type="password" id="cheatCode" placeholder="Masukkan kode cheat" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+    <div id="cheatOptions" style="display: none;">
+      <p>Pilih karakter (1-20):</p>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;">
+        <!-- Tombol karakter akan diisi oleh JavaScript -->
+      </div>
+    </div>
+    <button id="submitCheatCode" style="background-color: #2ed573; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-top: 10px;">Submit</button>
+    <button id="closeCheat" style="background-color: #ff4757; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-top: 10px; margin-left: 5px;">Tutup</button>
+  </div>
+</div>
+  <div class="container">
+    <h1>Cek Kepribadian Anime</h1>
+    <div id="input-section">
+      <label for="nameInput">Nama:</label>
+      <input type="text" id="nameInput" placeholder="Masukkan nama kamu" />
+      <label for="genderInput">Gender:</label>
+      <select id="genderInput">
+        <option value="">-- Pilih Gender --</option>
+        <option value="male">Laki-laki</option>
+        <option value="female">Perempuan</option>
+      </select>
+      <button id="startBtn" disabled>Mulai Tes</button>
+    </div>
+
+    <div id="quiz-section" class="hidden">
+      <div id="question-container">
+        <p id="question"></p>
+        <div id="options"></div>
+      </div>
+    </div>
+
+    <div id="result-section" class="hidden">
+      <h2>Hasil Kepribadianmu</h2>
+      <div id="resultContent"></div>
+      <button id="shareBtn" style="margin-top: 15px; display: none;">Bagikan Hasil</button>
+    </div>
+
+    <footer>
+      <small>Website ini dibuat oleh Rezky</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Additional script for better user experience
+    document.addEventListener('DOMContentLoaded', function() {
+      // Focus name input on page load
+      document.getElementById('nameInput').focus();
+      
+      // Add enter key support
+      document.getElementById('nameInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          document.getElementById('genderInput').focus();
+        }
+      });
+      
+      // Share button functionality
+      document.addEventListener('click', function(e) {
+        if (e.target.id === 'shareBtn') {
+          if (navigator.share) {
+            navigator.share({
+              title: 'Hasil Tes Kepribadian Anime',
+              text: `Aku mirip karakter anime ${document.querySelector('.anime-title')?.textContent || ''}, coba tes kamu juga!`,
+              url: window.location.href
+            }).catch(err => {
+              console.log('Error sharing:', err);
+            });
+          } else {
+            // Fallback for browsers that don't support Web Share API
+            const text = `Aku mirip karakter anime ${document.querySelector('.anime-title')?.textContent || ''}!\nCek kepribadian anime kamu di: ${window.location.href}`;
+            prompt('Salin teks berikut untuk dibagikan:', text);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
