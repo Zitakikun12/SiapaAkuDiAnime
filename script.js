@@ -338,7 +338,7 @@ submitCheatCode.addEventListener("click", () => {
     
 
     const allCharacters = [...characters.male, ...characters.female]
-      .filter(char => char.id <= 20)
+      .filter(char => char.id <= 24)
       .sort((a, b) => a.id - b.id);
     
     allCharacters.forEach(char => {
