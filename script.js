@@ -477,7 +477,7 @@ async function showResult() {
     <div class="anime-card">
       <img src="${match.image}" alt="${match.nama}" class="character-image" onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'" />
       <div class="anime-info">
-        <h2>${nameInput.value || "Anda"} mirip dengan:</h2>
+<h2>${nameInput.value || || "Anda"} mirip dengan:</h2>
         <div class="anime-title">${match.nama}</div>
         <div class="anime-details">
           <p><b>Sifat:</b> ${match.sifat}</p>
