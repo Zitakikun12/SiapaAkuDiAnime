@@ -197,7 +197,7 @@ const characters = {
     {
       id: 15,
       nama: "Hinata Hyuga",
-      image: "images/12.jpg",
+      image: "images/15.jpg",
       sifat: "pemalu, penyayang",
       hobby: "Berlatih",
       makanan: "Ramen",
@@ -208,7 +208,7 @@ const characters = {
     {
       id: 16,
       nama: "Zero Two",
-      image: "images/13.jpg",
+      image: "images/16.jpg",
       sifat: "berani, genit",
       hobby: "Bertarung",
       makanan: "Permen",
@@ -219,7 +219,7 @@ const characters = {
     {
       id: 17,
       nama: "Rem",
-      image: "images/14.jpg",
+      image: "images/17.jpg",
       sifat: "setia, penyayang",
       hobby: "Membersihkan",
       makanan: "Makanan ringan",
@@ -230,7 +230,7 @@ const characters = {
     {
       id: 18,
       nama: "Saber",
-      image: "images/15.jpg",
+      image: "images/18.jpg",
       sifat: "bangsawan, kuat",
       hobby: "Bertarung",
       makanan: "Burger",
@@ -241,7 +241,7 @@ const characters = {
     {
       id: 19,
       nama: "Yor Forger",
-      image: "images/16.jpg",
+      image: "images/19.jpg",
       sifat: "pendiam, mematikan",
       hobby: "Bunuh diam-diam",
       makanan: "Masakan rumah",
@@ -252,7 +252,7 @@ const characters = {
     {
       id: 20,
       nama: "Asuna Yuuki",
-      image: "images/17.jpg",
+      image: "images/20.jpg",
       sifat: "penuh semangat, setia",
       hobby: "Bermain game",
       makanan: "Masakan Jepang",
@@ -263,7 +263,7 @@ const characters = {
     {
       id: 21,
       nama: "Violet Evergarden",
-      image: "images/18.jpg",
+      image: "images/21.jpg",
       sifat: "pendiam, penyayang",
       hobby: "Menulis surat",
       makanan: "Kue manis",
@@ -274,7 +274,7 @@ const characters = {
     {
       id: 22,
       nama: "Nezuko Kamado",
-      image: "images/19.jpg",
+      image: "images/22.jpg",
       sifat: "tenang, protektif",
       hobby: "Tidur",
       makanan: "Manisan",
@@ -285,7 +285,7 @@ const characters = {
     {
       id: 23,
       nama: "Shinobu Kocho",
-      image: "images/20.jpg",
+      image: "images/23.jpg",
       sifat: "lembut, tajam",
       hobby: "Meneliti racun",
       makanan: "Dango",
@@ -296,7 +296,7 @@ const characters = {
     {
       id: 24,
       nama: "Misa Amane",
-      image: "images/21.jpg",
+      image: "images/24.jpg",
       sifat: "ceria, obsesif",
       hobby: "Modeling",
       makanan: "Kue dan manisan",
