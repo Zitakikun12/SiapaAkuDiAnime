@@ -1,5 +1,5 @@
 :root {
-  /* Color Variables */
+
   --bg-primary: #1f1f2e;
   --bg-secondary: #2e2e4d;
   --bg-accent: #42315f;
@@ -56,7 +56,7 @@ h1::after {
   border-radius: 3px;
 }
 
-/* Input Section Styles */
+
 #input-section {
   animation: fadeIn 0.5s ease-out;
 }
@@ -87,7 +87,7 @@ select:focus {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Button Styles */
+
 button {
   margin-top: 1.5rem;
   width: 100%;
@@ -114,7 +114,7 @@ button:disabled {
   opacity: 0.7;
 }
 
-/* Quiz Section Styles */
+
 #question-container {
   margin-top: 1.5rem;
   min-height: 140px;
@@ -147,7 +147,7 @@ button:disabled {
   background: var(--bg-accent);
 }
 
-/* Result Section Styles */
+
 #result-section {
   text-align: center;
   animation: fadeIn 0.8s ease-out;
