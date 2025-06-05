@@ -360,7 +360,7 @@ submitCheatCode.addEventListener("click", () => {
           <div class="anime-card">
             <img src="${char.image}" alt="${char.nama}" class="character-image" onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'" />
             <div class="anime-info">
-              <h2>${nameInput.value || "Anda"} (CHEAT):</h2>
+              <h2>${nameInput.value || || "Anda"} mirip dengan:</h2>
               <div class="anime-title">${char.nama}</div>
               <div class="anime-details">
                 <p><b>Sifat:</b> ${char.sifat}</p>
