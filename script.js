@@ -307,7 +307,7 @@ const characters = {
   ]
 };
 
-// Cheat System
+
 const cheatBtn = document.getElementById("cheatBtn");
 const cheatModal = document.getElementById("cheatModal");
 const cheatCode = document.getElementById("cheatCode");
@@ -315,30 +315,30 @@ const cheatOptions = document.getElementById("cheatOptions");
 const submitCheatCode = document.getElementById("submitCheatCode");
 const closeCheat = document.getElementById("closeCheat");
 
-// Tampilkan modal cheat
+
 cheatBtn.addEventListener("click", () => {
   cheatModal.style.display = cheatModal.style.display === "block" ? "none" : "block";
 });
 
-// Tutup modal
+
 closeCheat.addEventListener("click", () => {
   cheatModal.style.display = "none";
 });
 
-// Submit kode cheat
+
 submitCheatCode.addEventListener("click", () => {
   if (cheatCode.value === "SayangNadira") {
     cheatOptions.style.display = "block";
     cheatCode.style.display = "none";
     submitCheatCode.style.display = "none";
     
-    // Buat tombol karakter
+
     const cheatOptionsContainer = cheatOptions.querySelector("div");
     cheatOptionsContainer.innerHTML = "";
     
-    // Gabungkan karakter male dan female
+
     const allCharacters = [...characters.male, ...characters.female]
-      .filter(char => char.id <= 20) // Hanya karakter 1-20
+      .filter(char => char.id <= 20)
       .sort((a, b) => a.id - b.id);
     
     allCharacters.forEach(char => {
@@ -351,7 +351,7 @@ submitCheatCode.addEventListener("click", () => {
       btn.style.borderRadius = "3px";
       
       btn.addEventListener("click", () => {
-        // Langsung tampilkan hasil dengan karakter yang dipilih
+
         inputSection.classList.add("hidden");
         quizSection.classList.add("hidden");
         resultSection.classList.remove("hidden");
@@ -425,27 +425,25 @@ function getBestMatch() {
   const scores = pool.map(char => {
     let score = 0;
     
-    // Enhanced scoring system
+
     answers.forEach((answer, index) => {
       const ans = answer.toLowerCase();
       const question = questions[index].question.toLowerCase();
-      
-      // Check personality traits (higher weight for personality questions)
+
       if (question.includes("sifat") || question.includes("keputusan") || 
           question.includes("konflik") || question.includes("mengandalkan") || 
           question.includes("pendekatan")) {
         if (char.sifat.toLowerCase().includes(ans)) score += 3;
       }
       
-      // Check exact matches (medium weight)
+
       if (question.includes("hobi") && char.hobby.toLowerCase().includes(ans)) score += 2;
       if (question.includes("makanan") && char.makanan.toLowerCase().includes(ans)) score += 2;
       if (question.includes("tempat") && char.tempat.toLowerCase().includes(ans)) score += 2;
 
       if (question.includes("genre") && char.genre && char.genre.toLowerCase().includes(ans)) score += 2;
       if (question.includes("karir") && char.karir && char.karir.toLowerCase().includes(ans)) score += 2;
-      
-      // Additional matching for specific questions
+
       if (index === 10 && char.genre && char.genre.toLowerCase().includes(ans)) score += 1;
       if (index === 15 && char.karir && char.karir.toLowerCase().includes(ans)) score += 1;
     });
@@ -455,10 +453,10 @@ function getBestMatch() {
 
   scores.sort((a, b) => b.score - a.score);
   
-  // Debug: Log top 3 matches
+
   console.log("Top 3 Matches:", scores.slice(0, 3));
   
-  // Return top match or random from top 3 if scores are close
+
   if (scores.length > 2 && scores[0].score - scores[2].score < 3) {
     const topMatches = scores.slice(0, 3);
     return topMatches[Math.floor(Math.random() * topMatches.length)].char;
@@ -513,7 +511,6 @@ async function showResult() {
   });
 }
 
-// Event Listeners
 function checkStartBtn() {
   startBtn.disabled = !(nameInput.value.trim() && genderInput.value);
 }
@@ -535,5 +532,4 @@ startBtn.addEventListener("click", () => {
   showQuestion(currentQuestionIndex);
 });
 
-// Initialize
 checkStartBtn();
